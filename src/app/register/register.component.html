@@ -1,0 +1,26 @@
+<section class="full-page ewHskh">
+    <form class="form" [formGroup]="form">
+        <h3 *ngIf="isLogin">Login</h3>
+        <h3 *ngIf="!isLogin">Register</h3>
+        <div class="form-row" *ngIf="!isLogin">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" type="text" class="form-input" formControlName="name">
+        </div>
+        <div class="form-row">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-input" formControlName="email">
+        </div>
+        <div class="form-row">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" type="password" class="form-input" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-block mr-3" (click)="submit()">Submit</button>
+        <p *ngIf="isLogin">
+            Not a member yet? <button type="button" class="member-btn" (click)="isLogin=!isLogin">Register</button>
+        </p>
+        <p *ngIf="!isLogin">
+            Already a member? <button type="button" class="member-btn" (click)="isLogin=!isLogin">Login</button>
+        </p>
+
+    </form>
+</section>

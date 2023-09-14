@@ -1,0 +1,119 @@
+<div class="main-content">
+    <div>
+        <form class="form" [formGroup]="form">
+            <h3>Search Form</h3>
+            <div class="form-center">
+                <div class="form-row">
+                    <label class="form-label">Search</label>
+                    <input [(ngModel)]="searched" (input)="searchChanged($event)" type="text" class="form-input" formControlName="search">
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Status</label>
+                    <select
+                            formControlName="status"
+                            [ngModel]="status"
+                            class="form-select"
+                            (change)="changeStatus($event)"
+                    >
+                        <option value="all">all</option>
+                        <option value="interview">interview</option>
+                        <option value="declined">declined</option>
+                        <option value="pending">pending</option>
+
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Type</label>
+                    <select
+                            formControlName="jobType"
+                            [ngModel]="selectedJobType"
+                            class="form-select"
+                            (change)="changeJobType($event)"
+                    >
+                        <option value="all">all</option>
+                        <option value="full-time">full-time</option>
+                        <option value="part-time">part-time</option>
+                        <option value="remote">remote</option>
+                        <option value="internship">internship</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Sort</label>
+                    <select
+                            formControlName="sort"
+                            [ngModel]="selectedSorting"
+                            class="form-select"
+                            (change)="changeSorting($event)"
+                    >
+                        <option value="latest">latest</option>
+                        <option value="oldest">oldest</option>
+                        <option value="a-z">a-z</option>
+                        <option value="z-a">z-a</option>
+                    </select>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-block btn-danger" (click)="submit()" >Clear Filters</button>                              </div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <section class="gWLTcz">
+            <h5>{{data?.totalJobs}} Job Found</h5>
+            <div class="jobs">
+
+            <article *ngFor="let job of data?.jobs" class="eIxygc">
+                <header>
+                <div class="main-icon">{{job?.company[0]}}</div>
+                    <div class="info">
+                        <h5>{{job?.position}}</h5>
+                        <p>{{job?.company}}</p>
+                    </div>
+                </header>
+                <div class="content">
+                    <div class="content-center">
+                        <div class="bOsXdw">
+                            <span class="icon">
+                                <svg stroke="gray" fill="gray" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path></svg>
+                            </span>
+                            <span class="text">
+                                {{job?.jobLocation}}
+                            </span>
+                        </div>
+                        <div class="bOsXdw">
+                            <span class="icon">
+<svg stroke="gray" fill="gray" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"></path></svg>                            </span>
+                            <span class="text">
+                                                                {{job?.createdAt | date:"MMM dd'th', yyyy"}}
+
+                            </span>
+                        </div>
+                        <div class="bOsXdw">
+                            <span class="icon">
+<svg stroke="gray" fill="gray" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"></path></svg>                            </span>
+                            <span class="text">
+{{job?.jobType}}
+                            </span>
+                        </div>
+                        <div [ngClass]="{'pending': job?.status === 'pending', 'status interview' : job?.status === 'interview', 'status declined' : job?.status === 'declined'}">
+                            {{job?.status}}
+                        </div>
+
+                    </div>
+                    <footer>
+                        <div class="actions">
+                            <a class="btn edit-btn" [routerLink]="['/add-job/'+job?._id]">Edit</a>
+                            <button type="button" class="btn delete-btn" (click)="deleteJob(job?._id)">Delete</button>
+                        </div>
+                    </footer>
+                </div>
+
+            </article>
+            </div>
+
+        </section>
+
+    </div>
+</div>
+

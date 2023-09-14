@@ -1,0 +1,43 @@
+svg{
+    padding-right: 4px;
+    width: 30px;
+}
+
+.button-dropdown{
+    background: transparent;
+    border-color: transparent;
+    color: var(--primary-500);
+    -webkit-letter-spacing: var(--letterSpacing);
+    -moz-letter-spacing: var(--letterSpacing);
+    -ms-letter-spacing: var(--letterSpacing);
+    letter-spacing: var(--letterSpacing);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.drop-menu{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    background: var(--primary-100);
+    box-shadow: var(--shadow-2);
+    padding: 0.5rem;
+    text-align: center;
+    visibility: hidden;
+    border-radius: var(--borderRadius);
+}
+
+.dropdown-menu a:hover{
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    color: var(--primary-500);
+}
+.dropdown-menu a{
+    color: var(--primary-500);
+    font-weight: 400;
+}
+.dropdown-menu{
+    min-width: 7.5rem;
+}

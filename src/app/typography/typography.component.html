@@ -1,0 +1,55 @@
+<div class="main-content">
+    <div>
+        <form class="form" [formGroup]="form">
+            <h3 *ngIf="!edit">Add Job</h3>
+            <h3 *ngIf="edit">Edit Job</h3>
+            <div class="form-center">
+                <div class="form-row">
+                    <label class="form-label">Position</label>
+                    <input type="text" class="form-input" formControlName="position">
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Company</label>
+                    <input  type="text" class="form-input" formControlName="company">
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Job Location</label>
+                    <input  type="email" class="form-input" formControlName="jobLocation">
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Status</label>
+                    <select
+                        formControlName="status"
+                        [ngModel]="status"
+                        class="form-select"
+                        (change)="changeStatus($event)"
+                >
+                        <option value="interview">interview</option>
+                        <option value="declined">declined</option>
+                        <option value="pending">pending</option>
+
+                </select>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Job Type</label>
+                    <select
+                            formControlName="jobType"
+                            [ngModel]="selectedJobType"
+                            class="form-select"
+                            (change)="changeJobType($event)"
+                    >
+                        <option value="full-time">full-time</option>
+                        <option value="part-time">part-time</option>
+                        <option value="remote">remote</option>
+                        <option value="internship">internship</option>
+                    </select>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-block clear-btn" (click)="clear()" >Clear</button>
+                    <button type="submit" class="btn btn-block submit-btn" (click)="submit()" >Submit</button>                              </div>
+            </div>
+        </form>
+    </div>
+</div>
+
